@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class ArticleWebView extends StatefulWidget {
-  ArticleWebView({Key key, this.url}) : super(key: key);
+class ArticleWebPage extends StatefulWidget {
+  ArticleWebPage({Key key, this.url}) : super(key: key);
   final String url;
 
   @override
-  _ArticleWebViewState createState() => _ArticleWebViewState();
+  _ArticleWebPageState createState() => _ArticleWebPageState();
 }
 
-class _ArticleWebViewState extends State<ArticleWebView> {
+class _ArticleWebPageState extends State<ArticleWebPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

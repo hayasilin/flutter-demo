@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/model/User.dart';
-import 'package:flutter_app/network/NetworkClient.dart';
+import 'package:flutter_app/model/user.dart';
+import 'package:flutter_app/network/network_client.dart';
 import 'dart:convert';
 
-class UserListView extends StatefulWidget {
+class UserListPage extends StatefulWidget {
   @override
-  createState() => _UserListViewState();
+  createState() => _UserListPageState();
 }
 
-class _UserListViewState extends State {
+class _UserListPageState extends State {
   var users = new List<User>();
 
   void _getUsers() {

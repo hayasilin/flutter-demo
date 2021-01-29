@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/model/Article.dart';
-import 'package:flutter_app/network/NetworkClient.dart';
+import 'package:flutter_app/model/article.dart';
+import 'package:flutter_app/network/network_client.dart';
 import 'dart:convert';
 
-import 'article_web_view.dart';
+import 'article_web_page.dart';
 
-class ArticleListView extends StatefulWidget {
+class ArticleListPage extends StatefulWidget {
   @override
-  createState() => _ArticleListViewState();
+  createState() => _ArticleListPageState();
 }
 
-class _ArticleListViewState extends State {
+class _ArticleListPageState extends State {
   var articles = new List<Article>();
 
   void _getArticles() {
@@ -51,7 +51,7 @@ class _ArticleListViewState extends State {
             title: Text(articles[index].title),
             onTap: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => ArticleWebView(url: articles[index].url)));
+                  context, MaterialPageRoute(builder: (context) => ArticleWebPage(url: articles[index].url)));
             },
           );
         },
