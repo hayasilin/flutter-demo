@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/view/album_page.dart';
 import 'package:flutter_app/view/article_list_page.dart';
 import 'package:flutter_app/view/UserListPage.dart';
 
