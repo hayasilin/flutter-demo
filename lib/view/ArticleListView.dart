@@ -17,7 +17,7 @@ class _ArticleListViewState extends State {
         Utf8Decoder utf8decoder = Utf8Decoder();
         var data = json.decode(utf8decoder.convert(response.bodyBytes));
         Iterable list = data['list'];
-        articles = list.map((model) => Article.fromeJSON(model)).toList();
+        articles = list.map((model) => Article.fromJSON(model)).toList();
       });
     });
   }
@@ -40,7 +40,13 @@ class _ArticleListViewState extends State {
       body: ListView.builder(
         itemCount: articles.length,
         itemBuilder: (context, index) {
-          return ListTile(title: Text(articles[index].title));
+          return ListTile(
+              leading: Image.network(
+                articles[index].imageList.first,
+                width: 80,
+                height: 80,
+              ),
+              title: Text(articles[index].title));
         },
       ),
     );
