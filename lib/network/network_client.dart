@@ -25,7 +25,7 @@ class NetworkClient {
       final list = data['list'];
       return list.map<Article>((json) => Article.fromJSON(json)).toList();
     } else {
-      throw Exception('Failed to load alum');
+      throw Exception('Failed to load articles');
     }
   }
 
