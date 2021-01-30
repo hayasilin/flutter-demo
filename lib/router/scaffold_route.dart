@@ -39,11 +39,11 @@ class _ScaffoldRouteState extends State<ScaffoldRoute> {
             label: 'Articles',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.map),
             label: 'Users',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.settings),
             label: 'Album',
           ),
         ],
