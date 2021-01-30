@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/router/scaffold_route.dart';
 import 'package:flutter_app/view/album_page.dart';
 import 'package:flutter_app/view/article_list_page.dart';
 import 'package:flutter_app/view/UserListPage.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: ArticleListPage(),
+      home: ScaffoldRoute(),
     );
   }
 }
