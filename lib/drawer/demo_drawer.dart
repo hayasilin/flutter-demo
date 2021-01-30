@@ -10,7 +10,6 @@ class DemoDrawer extends StatelessWidget {
     return Drawer(
       child: MediaQuery.removePadding(
         context: context,
-        //移除抽屉菜单顶部默认留白
         removeTop: true,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -19,17 +18,8 @@ class DemoDrawer extends StatelessWidget {
               padding: const EdgeInsets.only(top: 38.0),
               child: Row(
                 children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: ClipOval(
-                      child: Image.asset(
-                        "imgs/avatar.png",
-                        width: 80,
-                      ),
-                    ),
-                  ),
                   Text(
-                    "Wendux",
+                    "Demo Drawer",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   )
                 ],
