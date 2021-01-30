@@ -21,9 +21,9 @@ class NetworkClient {
     final response = await http.get(articleUrl);
     if (response.statusCode == 200) {
       Utf8Decoder utf8decoder = Utf8Decoder();
-      var data = json.decode(utf8decoder.convert(response.bodyBytes));
-      final List<dynamic> contents = data['list'];
-      return contents.map((content) => Article.fromJSON(content)).toList();
+      final data = jsonDecode(utf8decoder.convert(response.bodyBytes));
+      final list = data['list'];
+      return list.map<Article>((json) => Article.fromJSON(json)).toList();
     } else {
       throw Exception('Failed to load alum');
     }

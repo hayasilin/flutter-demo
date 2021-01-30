@@ -11,23 +11,29 @@ class ArticleListPage extends StatefulWidget {
 }
 
 class _ArticleListPageState extends State {
-  var articles = new List<Article>();
+//  var articles = new List<Article>();
+//
+//  void _getArticles() {
+//    NetworkClient.getArticles().then((response) {
+//      setState(() {
+//        Utf8Decoder utf8decoder = Utf8Decoder();
+//        var data = json.decode(utf8decoder.convert(response.bodyBytes));
+//        Iterable list = data['list'];
+//        articles = list.map((model) => Article.fromJSON(model)).toList();
+//      });
+//    });
+//  }
 
-  void _getArticles() {
-    NetworkClient.getArticles().then((response) {
-      setState(() {
-        Utf8Decoder utf8decoder = Utf8Decoder();
-        var data = json.decode(utf8decoder.convert(response.bodyBytes));
-        Iterable list = data['list'];
-        articles = list.map((model) => Article.fromJSON(model)).toList();
-      });
-    });
+  Future<List> _fetchArticles() async {
+    var result = await NetworkClient.fetchArticles();
+    return result;
   }
 
   @override
   void initState() {
     super.initState();
-    _getArticles();
+//    _getArticles();
+    _fetchArticles();
   }
 
   @override
@@ -39,23 +45,34 @@ class _ArticleListPageState extends State {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Article List")),
-      body: ListView.builder(
-        itemCount: articles.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            leading: Image.network(
-              articles[index].imageList.first,
-              width: 80,
-              height: 80,
-            ),
-            title: Text(articles[index].title),
-            onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => ArticleWebPage(url: articles[index].url)));
-            },
-          );
-        },
-      ),
+      body: FutureBuilder(
+          future: _fetchArticles(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              var articles = snapshot.data;
+              return ListView.builder(
+                itemCount: articles.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    leading: Image.network(
+                      articles[index].imageList.first,
+                      width: 80,
+                      height: 80,
+                    ),
+                    title: Text(articles[index].title),
+                    onTap: () {
+                      Navigator.push(
+                          context, MaterialPageRoute(builder: (context) => ArticleWebPage(url: articles[index].url)));
+                    },
+                  );
+                },
+              );
+            } else if (snapshot.hasError) {
+              return Text("${snapshot.error}");
+            }
+
+            return Center(child: CircularProgressIndicator());
+          }),
     );
   }
 }
