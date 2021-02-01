@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/clean_architecture/presentation/home_page.dart';
 import 'package:flutter_app/drawer/demo_drawer.dart';
 import 'package:flutter_app/view/UserListPage.dart';
 import 'package:flutter_app/view/album_page.dart';
@@ -13,6 +14,7 @@ class _ScaffoldRouteState extends State<ScaffoldRoute> {
   int _selectedIndex = 0;
 
   final tabs = [
+    HomePage(title: 'Clean Architecture'),
     ArticleListPage(),
     UserListPage(),
     AlbumPage(),
@@ -36,6 +38,10 @@ class _ScaffoldRouteState extends State<ScaffoldRoute> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.timer),
             label: 'Articles',
           ),
           BottomNavigationBarItem(

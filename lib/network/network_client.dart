@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:flutter_app/model/Article.dart';
 import 'package:flutter_app/model/album.dart';
+import 'package:flutter_app/model/article.dart';
 import 'package:http/http.dart' as http;
 
 class NetworkClient {
