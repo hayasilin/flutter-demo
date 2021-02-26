@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/bloc/api_repository.dart';
 import 'package:flutter_app/clean_architecture/core/data/article_repository.dart';
 import 'package:flutter_app/clean_architecture/core/usecase/get_articles_use_case.dart';
 import 'package:flutter_app/clean_architecture/network/api_service.dart';
@@ -28,6 +29,8 @@ class _MyAppState extends State<MyApp> {
   ArticleRepository _articleRepository;
   GetArticlesUseCase _getArticlesUseCase;
 
+  final apiRepository = ApiRepository(ApiServiceImpl());
+
   @override
   void initState() {
     super.initState();
@@ -47,7 +50,8 @@ class _MyAppState extends State<MyApp> {
           Provider(
             create: (BuildContext context) => HomeBloc(_getArticlesUseCase),
             dispose: (BuildContext context, HomeBloc bloc) => bloc.dispose(),
-          )
+          ),
+          Provider<ApiRepository>.value(value: apiRepository, updateShouldNotify: (_, __) => false),
         ],
         child: ScaffoldRoute(),
       ),
